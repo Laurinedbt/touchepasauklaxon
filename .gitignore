@@ -1,0 +1,4 @@
+# Dossier vendor (installé par Composer)
+vendor/
+
+.env
