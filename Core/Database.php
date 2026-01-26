@@ -5,7 +5,7 @@ function connection() {
         $bdd = new PDO(
             'mysql:host=localhost;dbname=touche_pas_au_klaxon;charset=utf8mb4',
             'root',
-            'root'
+            '' // mdp vide
         );
         return $bdd;
     } catch (Exception $e) {
