@@ -1,15 +1,12 @@
 <?php
 
-function connection() {
-    try {
-        $bdd = new PDO(
-            'mysql:host=localhost;dbname=touche_pas_au_klaxon;charset=utf8mb4',
-            'root',
-            '' // mdp vide
+class Database {
+    public static function getConnection(): PDO {
+        return new PDO(
+            'mysql:host=localhost;dbname=touche_pas_au_klaxon;charset=utf8mb4', 
+            'root', 
+            ''
         );
-        return $bdd;
-    } catch (Exception $e) {
-        die('Erreur : ' . $e->getMessage());
     }
 }
 

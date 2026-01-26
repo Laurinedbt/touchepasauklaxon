@@ -1,19 +1,17 @@
-<?php 
+<?php
+require_once __DIR__ . '/Database.php';
 
-require "Database.php";
+/**
+ * Classe parente pour tous les modèles
+ */
+class DefaultModel {
 
-function findAll($stmt) {
-    // On charge la connexion à la BDD
-    $bdd = connection();
+    protected PDO $db;
 
-    // On exécute notre requête SQL récupérée en paramètre
-    $query = $bdd->query($stmt);
-
-    $result = $query->fetchAll();
-
-    if ($result) {
-        return $result;
-    } else {
-        die("Une erreur s'est produite lors de la récupération des données");
+    public function __construct() {
+        // On récupère une connexion PDO depuis Database
+        $this->db = Database::getConnection();
     }
 }
+
+?>
