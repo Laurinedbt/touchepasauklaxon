@@ -9,7 +9,11 @@
     <body>
         <main>
             <div class="container">
-                <form action="/login" method="POST" class="formulaire">
+                <?php if (isset($_GET['error'])): ?>
+                    <p style="color:red;">Identifiants incorrects, veuillez réessayer.</p>
+                <?php endif; ?>
+                
+                <form action="index.php?action=login" method="POST" class="formulaire">
                     <fieldset>
                         <legend>Connexion</legend>
 
@@ -20,7 +24,7 @@
                         <input type="password" name="password" id="password" required><br><br>
 
                         <input type="submit" value="Se connecter">
-                    </fieldset>>
+                    </fieldset>
                 </form>
             </div>
         </main>

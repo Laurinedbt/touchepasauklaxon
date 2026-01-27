@@ -1,6 +1,7 @@
 <?php
 
-require_once __DIR__ . '/DefaultModel.php';
+require_once __DIR__ . '/../Controller/UserController.php';
+require_once __DIR__ . '/../../Core/DefaultModel.php';
 
 class UserModel extends DefaultModel {
 
@@ -17,7 +18,7 @@ class UserModel extends DefaultModel {
      */
     public function getUserByMail(string $mail): array|false {
         $stmt = $this->db->prepare('SELECT * FROM users WHERE Mail = :mail');
-        $stmt->execute(['mail' => $mail]);
+        $stmt->execute([':mail' => $mail]);
         return $stmt->fetch();
     }
 

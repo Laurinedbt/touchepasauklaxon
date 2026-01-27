@@ -12,7 +12,16 @@
     <?php require_once 'header.php'; ?>
     
         <main class="mx-5">
-            <div><p class="dark-color info-text py-2">Pour obtenir plus d'informations sur un trajet, veuillez vous connecter</p></div>
+
+            <div class="mb-3">
+                <p class="dark-color info-text py-2">
+                    <?php if (!isset($_SESSION['user_mail'])): ?>
+                        Pour obtenir plus d'informations sur un trajet, veuillez vous connecter
+                    <?php else: ?>
+                        Trajets proposés
+                    <?php endif; ?>
+                </p>
+            </div>
 
             <table class="table table-striped table-bordered">
                 <thead class="text-center">
@@ -28,87 +37,24 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                    </tr>
-                    <tr>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                    </tr>
-                    <tr>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                    </tr>
-                    <tr>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                    </tr>
-                    <tr>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                    </tr>
-                    <tr>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                    </tr>
-                    <tr>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                    </tr>
-                    <tr>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                    </tr>
+                    <?php
+                    $tripModel = new TripModel();
+                    $trips = $tripModel->getAvailableTrips();
+
+                    foreach ($trips as $trip): ?>
+                        <tr>
+                            <td><?= htmlspecialchars($trip['depart']) ?></td>
+                            <td><?= htmlspecialchars($trip['date_depart']) ?></td>
+                            <td><?= htmlspecialchars($trip['heure_depart']) ?></td>
+                            <td><?= htmlspecialchars($trip['destination']) ?></td>
+                            <td><?= htmlspecialchars($trip['date_arrivee']) ?></td>
+                            <td><?= htmlspecialchars($trip['heure_arrivee']) ?></td>
+                            <td><?= htmlspecialchars($trip['places_disponibles']) ?></td>
+                            <td></td>
+                        </tr>
+                    <?php endforeach; ?>
                 </tbody>
+
             </table>
         </main>
     </body>

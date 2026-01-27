@@ -1,8 +1,34 @@
+<?php
+// Toujours démarrer la session si ce n'est pas déjà fait
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+?>
+
 <header>
     <nav class="navbar my-3 mx-5">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/">Touche pas au klaxon</a>
-            <a href="/login" class="btn btn-dark">Connexion</a>   
+            <a class="navbar-brand" href="index.php">Touche pas au klaxon</a>
+
+            <div class="ms-auto">
+                <?php if (!isset($_SESSION['user_mail'])): ?>
+                    <!-- Utilisateur non connecté -->
+                    <a href="login.php" class="btn btn-dark">Connexion</a>
+
+                <?php elseif (isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
+                    <!-- Admin connecté -->
+                    <a href="users_list.php" class="btn btn-dark">Utilisateurs</a>
+                    <a href="agences_list.php" class="btn btn-dark">Agences</a>
+                    <a href="trips_list.php" class="btn btn-dark">Trajets</a>
+                    <a href="logout.php" class="btn btn-dark">Déconnexion</a>
+
+                <?php else: ?>
+                    <!-- Utilisateur normal connecté -->
+                     <a href="trip_create.php" class="btn btn-dark">Créer un trajet</a>
+                    <span class="me-2">Bonjour <?= htmlspecialchars($_SESSION['user_name']) ?></span>
+                    <a href="logout.php" class="btn btn-dark">Déconnexion</a>
+                <?php endif; ?>
+            </div>
         </div>
     </nav>
 </header>
