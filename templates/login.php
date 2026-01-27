@@ -13,8 +13,8 @@
                     <fieldset>
                         <legend>Connexion</legend>
 
-                        <label for="email">Adresse e-mail</label>
-                        <input type="email" name="email" id="email" required><br><br>
+                        <label for="mail">Adresse e-mail</label>
+                        <input type="mail" name="mail" id="mail" required><br><br>
 
                         <label for="password">Mot de passe</label>
                         <input type="password" name="password" id="password" required><br><br>
