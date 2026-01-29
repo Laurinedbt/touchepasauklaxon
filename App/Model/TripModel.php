@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/../Core/DefaultModel.php';
+require_once __DIR__ . '/../../Core/DefaultModel.php';
 
 class TripModel extends DefaultModel {
 
@@ -12,7 +12,7 @@ class TripModel extends DefaultModel {
      */
     public function createTrip(array $data): void {
         $stmt = $this->db->prepare('
-            INSERT INTO trajets (
+            INSERT INTO trips (
                 user_mail, depart, date_depart, heure_depart,
                 destination, date_arrivee, heure_arrivee,
                 places, places_disponibles
@@ -45,13 +45,18 @@ class TripModel extends DefaultModel {
             SELECT id, depart, date_depart, heure_depart, 
                    destination, date_arrivee, heure_arrivee, 
                    places_disponibles
-            FROM trajets
+            FROM trips
             WHERE places_disponibles > 0
               AND (date_depart > CURDATE() OR (date_depart = CURDATE() AND heure_depart >= NOW()))
             ORDER BY date_depart ASC, heure_depart ASC
         ');
 
         return $stmt->fetchAll();
+    }
+
+    public function getAllCities() {
+        $stmt = $this->db->query("SELECT DISTINCT nom_ville FROM agences ORDER BY nom_ville");
+        return $stmt->fetchAll(PDO::FETCH_COLUMN);
     }
 }
 

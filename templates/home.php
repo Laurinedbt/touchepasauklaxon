@@ -38,6 +38,9 @@
                 </thead>
                 <tbody>
                     <?php
+
+                    require_once __DIR__ . '/../App/Model/TripModel.php';
+
                     $tripModel = new TripModel();
                     $trips = $tripModel->getAvailableTrips();
 

@@ -19,14 +19,14 @@ if (session_status() === PHP_SESSION_NONE) {
                     <!-- Admin connecté -->
                     <a href="users_list.php" class="btn btn-dark">Utilisateurs</a>
                     <a href="agences_list.php" class="btn btn-dark">Agences</a>
-                    <a href="trips_list.php" class="btn btn-dark">Trajets</a>
+                    <a href="trip_create.php" class="btn btn-dark">Trajets</a>
                     <a href="logout.php" class="btn btn-dark">Déconnexion</a>
 
                 <?php else: ?>
                     <!-- Utilisateur normal connecté -->
-                     <a href="trip_create.php" class="btn btn-dark">Créer un trajet</a>
+                     <a href="index.php?action=trip_create" class="btn btn-dark">Créer un trajet</a>
                     <span class="me-2">Bonjour <?= htmlspecialchars($_SESSION['user_name']) ?></span>
-                    <a href="logout.php" class="btn btn-dark">Déconnexion</a>
+                    <a href="index.php?action=logout" class="btn btn-dark">Déconnexion</a>
                 <?php endif; ?>
             </div>
         </div>

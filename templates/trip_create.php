@@ -1,3 +1,9 @@
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -8,30 +14,18 @@
 </head>
     <body>
 
-    <?php require 'header.php'; ?>
-
         <main class="mx-5">
-
-            <?php
-                
-                if (session_status() === PHP_SESSION_NONE) {
-                    session_start();
-                }
-
-                // On suppose que l'utilisateur est déjà connecté
-                $user_name = $_SESSION['user_name'] ?? '';
-                $user_mail = $_SESSION['user_mail'] ?? '';
-            ?>
 
         <h2>Créer un trajet</h2>
 
             <form action="index.php?action=trip_create" method="POST">
                 <!-- Infos utilisateur pré-remplies et non modifiables -->
                 <label>Nom & Prénom :</label>
-                <input type="text" value="<?= htmlspecialchars($user_name) ?>" disabled><br><br>
+
+                <input type="text" value="<?= htmlspecialchars($_SESSION['user_name'] ?? '') ?>" readonly><br><br>
 
                 <label>Email :</label>
-                <input type="email" value="<?= htmlspecialchars($user_mail) ?>" disabled><br><br>
+                <input type="email" value="<?= htmlspecialchars($_SESSION['user_mail'] ?? '') ?>" readonly><br><br>
 
                 <!-- Infos sur le trajet -->
                 <label for="depart">Départ</label>
