@@ -43,7 +43,7 @@ class TripModel extends DefaultModel {
     public function getAvailableTrips(): array {
         $stmt = $this->db->query('
             SELECT id, depart, date_depart, heure_depart, 
-                   destination, date_arrivee, heure_arrivee, 
+                   destination, date_arrivee, heure_arrivee, places, 
                    places_disponibles
             FROM trips
             WHERE places_disponibles > 0

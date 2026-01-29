@@ -13,7 +13,7 @@ if (session_status() === PHP_SESSION_NONE) {
             <div class="ms-auto">
                 <?php if (!isset($_SESSION['user_mail'])): ?>
                     <!-- Utilisateur non connecté -->
-                    <a href="login.php" class="btn btn-dark">Connexion</a>
+                    <a href="index.php?action=login" class="btn btn-dark">Connexion</a>
 
                 <?php elseif (isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
                     <!-- Admin connecté -->

@@ -16,7 +16,6 @@ class UserController {
         if ($user && password_verify($password, $user['password'])) {
             $_SESSION['user_mail'] = $user['Mail'];
             $_SESSION['user_name'] = $user['Prenom'] . ' ' . $user['Nom'];
-            $_SESSION['user_phone'] = $user['Telephone'];
             $_SESSION['role'] = $user['role'] ?? 'user';
 
             header('Location: index.php?action=home');

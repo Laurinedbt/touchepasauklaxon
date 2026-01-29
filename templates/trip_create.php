@@ -39,6 +39,7 @@ if (session_status() === PHP_SESSION_NONE) {
                         <option value="<?= htmlspecialchars($ville) ?>"></option>
                     <?php endforeach; ?>
                 </datalist>
+                
 
                 <label for="date_depart">Date départ</label>
                 <input type="date" name="date_depart" id="date_depart" required>

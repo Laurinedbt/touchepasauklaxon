@@ -11,7 +11,6 @@ class TripController {
 
     // Traite le formulaire
     public function createProcess() {
-    session_start();
 
     $tripModel = new TripModel();
 
