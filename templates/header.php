@@ -17,9 +17,10 @@ if (session_status() === PHP_SESSION_NONE) {
 
                 <?php elseif (isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
                     <!-- Admin connecté -->
-                    <a href="users_list.php" class="btn btn-dark">Utilisateurs</a>
-                    <a href="agences_list.php" class="btn btn-dark">Agences</a>
-                    <a href="trip_create.php" class="btn btn-dark">Trajets</a>
+                    <a href="index.php?action=users_list" class="btn btn-dark">Utilisateurs</a>
+                    <a href="index.php?action=agences_list" class="btn btn-dark">Agences</a>
+                    <a href="index.php?action=trips_list" class="btn btn-dark">Trajets</a>
+                    <span class="me-2">Bonjour <?= htmlspecialchars($_SESSION['user_name']) ?></span>
                     <a href="logout.php" class="btn btn-dark">Déconnexion</a>
 
                 <?php else: ?>
