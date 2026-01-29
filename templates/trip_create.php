@@ -29,10 +29,16 @@ if (session_status() === PHP_SESSION_NONE) {
 
                 <!-- Infos sur le trajet -->
                 <label for="depart">Départ</label>
-                <input type="text" name="depart" id="depart" required><br><br>
+                <input list="villes" name="depart" id="depart" required><br><br>
 
                 <label for="destination">Destination</label>
-                <input type="text" name="destination" id="destination" required><br><br>
+                <input list="villes" name="destination" id="destination" required><br><br>
+
+                <datalist id="villes">
+                    <?php foreach ($villes as $ville): ?>
+                        <option value="<?= htmlspecialchars($ville) ?>"></option>
+                    <?php endforeach; ?>
+                </datalist>
 
                 <label for="date_depart">Date départ</label>
                 <input type="date" name="date_depart" id="date_depart" required>

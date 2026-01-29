@@ -5,6 +5,7 @@ class TripController {
 
     // Affiche le formulaire de création
     public function createForm() {
+        
         require __DIR__ . '/../templates/trip_create.php';
     }
 
@@ -28,5 +29,11 @@ class TripController {
     header('Location: index.php?action=home');
     exit;
 }
+
+    public function getCities(): array {
+        $tripModel = new TripModel();
+        return $tripModel->getAllCities();
+    }
+
 
 }

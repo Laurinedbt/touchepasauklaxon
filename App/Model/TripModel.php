@@ -55,7 +55,10 @@ class TripModel extends DefaultModel {
     }
 
     public function getAllCities() {
-        $stmt = $this->db->query("SELECT DISTINCT nom_ville FROM agences ORDER BY nom_ville");
+        $stmt = $this->db->query('
+        SELECT nom_ville
+        FROM agences
+        ORDER BY nom_ville');
         return $stmt->fetchAll(PDO::FETCH_COLUMN);
     }
 }

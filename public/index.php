@@ -33,6 +33,8 @@ switch ($action) {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $tripController->createProcess();
         } else {
+            $villes = $tripController->getCities();
+            
             require_once __DIR__ . '/../templates/trip_create.php';
         }
         break;
