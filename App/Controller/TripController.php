@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/../Model/TripModel.php';
+require_once __DIR__ . '/../Model/AgenceModel.php';
 
 class TripController {
 
@@ -22,7 +23,8 @@ class TripController {
         'heure_depart' => $_POST['heure_depart'] ?? '',
         'date_arrivee' => $_POST['date_arrivee'] ?? '',
         'heure_arrivee' => $_POST['heure_arrivee'] ?? '',
-        'places' => (int)($_POST['places'] ?? 1)
+        'places' => (int)($_POST['places'] ?? 1),
+        'places_disponibles' => (int)($_POST['places'] ?? 1)
     ]);
 
     header('Location: index.php?action=home');
@@ -30,8 +32,8 @@ class TripController {
 }
 
     public function getCities(): array {
-        $tripModel = new TripModel();
-        return $tripModel->getAllCities();
+        $agenceModel = new AgenceModel();
+        return $agenceModel->getAllCities();
     }
 
 

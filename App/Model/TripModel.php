@@ -54,12 +54,11 @@ class TripModel extends DefaultModel {
         return $stmt->fetchAll();
     }
 
-    public function getAllCities() {
+    public function getAllTrips(): array {
         $stmt = $this->db->query('
-        SELECT nom_ville
-        FROM agences
-        ORDER BY nom_ville');
-        return $stmt->fetchAll(PDO::FETCH_COLUMN);
+        SELECT *
+        FROM trips');
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }
 
