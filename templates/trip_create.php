@@ -20,12 +20,12 @@ if (session_status() === PHP_SESSION_NONE) {
 
             <form action="index.php?action=trip_create" method="POST">
                 <!-- Infos utilisateur pré-remplies et non modifiables -->
-                <label>Nom & Prénom :</label>
+                <label for="name_surname">Nom & Prénom :</label>
 
-                <input type="text" value="<?= htmlspecialchars($_SESSION['user_name'] ?? '') ?>" readonly><br><br>
+                <input type="text" name="name_surname" value="<?= htmlspecialchars($_SESSION['user_name'] ?? '') ?>" readonly><br><br>
 
-                <label>Email :</label>
-                <input type="email" value="<?= htmlspecialchars($_SESSION['user_mail'] ?? '') ?>" readonly><br><br>
+                <label for="user_mail">Email :</label>
+                <input type="email" name="user_mail" value="<?= htmlspecialchars($_SESSION['user_mail'] ?? '') ?>" readonly><br><br>
 
                 <!-- Infos sur le trajet -->
                 <label for="depart">Départ</label>
@@ -36,7 +36,7 @@ if (session_status() === PHP_SESSION_NONE) {
 
                 <datalist id="villes">
                     <?php foreach ($villes as $ville): ?>
-                        <option value="<?= htmlspecialchars($ville) ?>"></option>
+                        <option value="<?= htmlspecialchars($ville['nom_ville']) ?>"></option>
                     <?php endforeach; ?>
                 </datalist>
                 

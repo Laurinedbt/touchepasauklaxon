@@ -25,19 +25,19 @@ switch ($action) {
         exit;
 
     case 'trip_create':
-        if (!isset($_SESSION['user_mail'])) {
-            header('Location: index.php?action=login');
-            exit;
-        }
+    if (!isset($_SESSION['user_mail'])) {
+        header('Location: index.php?action=login');
+        exit;
+    }
 
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $tripController->createProcess();
-        } else {
-            $villes = $tripController->getCities();
-            
-            require_once __DIR__ . '/../templates/trip_create.php';
-        }
-        break;
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+        $tripController->createProcess();
+    } else {
+        $tripController->createForm();
+    }
+    break;
+
 
     case 'home':
     default:
