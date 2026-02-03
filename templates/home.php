@@ -35,9 +35,12 @@
                         <th>Date</th>
                         <th>Heure</th>
                         <th>Places</th>
-                        <th></th>
+                        <?php if (isset($_SESSION['user_mail'])): ?>
+                            <th></th>
+                        <?php endif; ?>
                     </tr>
                 </thead>
+
                 <tbody>
                     <?php
 
@@ -56,7 +59,9 @@
                             <td><?= htmlspecialchars($trip['heure_arrivee']) ?></td>
                             <td><?= htmlspecialchars($trip['places_disponibles']) ?></td>
 
-                            <!-- LIGNE MODALS -->
+                            <!-- ICÔNES ACTIONS -->
+
+                            <?php if (isset($_SESSION['user_mail'])): ?>
                             <td class="text-center">
 
                                 <!-- MODAL VOIR INFOS -->
@@ -88,6 +93,7 @@
                                     </a>
                                 <?php endif; ?>
                             </td>
+                            <?php endif; ?>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
