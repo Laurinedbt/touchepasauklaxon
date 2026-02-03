@@ -41,17 +41,22 @@ class TripModel extends DefaultModel {
      * @return array
      */
     public function getAvailableTrips(): array {
-        $stmt = $this->db->query('
-            SELECT id, user_mail, depart, date_depart, heure_depart, 
-                   destination, date_arrivee, heure_arrivee, places, 
-                   places_disponibles
-            FROM trips
-            WHERE places_disponibles > 0
-            ORDER BY date_depart ASC, heure_depart ASC
-        ');
+    $stmt = $this->db->query('
+        SELECT 
+            t.id, t.user_mail,
+            t.depart, t.date_depart, t.heure_depart,
+            t.destination, t.date_arrivee, t.heure_arrivee,
+            t.places, t.places_disponibles,
+            u.Nom, u.Prenom, u.Telephone, u.Mail
+        FROM trips t
+        JOIN users u ON u.Mail = t.user_mail
+        WHERE t.places_disponibles > 0
+        ORDER BY t.date_depart ASC, t.heure_depart ASC
+    ');
 
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
 
     public function getAllTrips(): array {
         $stmt = $this->db->query('

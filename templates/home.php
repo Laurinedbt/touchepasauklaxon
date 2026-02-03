@@ -5,6 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Page d'accueil</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+
         <link rel="stylesheet" href="../public/style.css">
     </head>
     <body>
@@ -53,13 +55,31 @@
                             <td><?= htmlspecialchars($trip['date_arrivee']) ?></td>
                             <td><?= htmlspecialchars($trip['heure_arrivee']) ?></td>
                             <td><?= htmlspecialchars($trip['places_disponibles']) ?></td>
-                            <td></td>
+
+                            <!-- MODAL -->
+                            <td class="text-center">
+                                <?php if (isset($_SESSION['user_mail'])): ?>
+                                    <i class="bi bi-eye"
+                                    role="button"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#tripModal"
+                                    data-auteur="<?= htmlspecialchars(($trip['Prenom'] ?? '').' '.($trip['Nom'] ?? '')) ?>"
+                                    data-phone="<?= htmlspecialchars($trip['Telephone'] ?? '') ?>"
+                                    data-mail="<?= htmlspecialchars($trip['Mail'] ?? '') ?>"
+                                    data-places="<?= htmlspecialchars($trip['places'] ?? '') ?>">
+                                    </i>
+                                <?php endif; ?>
+                            </td>
+
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
-
             </table>
         </main>
+
+        <?php require_once 'modal.php'; ?>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    
     </body>
     <footer class="d-flex justify-content-center">
         <div><p>&copy; 2026 - MVC PHP</p></div>
