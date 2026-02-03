@@ -95,4 +95,9 @@ class TripModel extends DefaultModel {
         ':id' => (int)$data['id'],
     ]);
 }
+
+    public function deleteTrip(int $id): void {
+        $stmt = $this->db->prepare('DELETE FROM trips WHERE id = :id');
+        $stmt->execute([':id' => $id]);
+    }
 }

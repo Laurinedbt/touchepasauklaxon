@@ -66,5 +66,26 @@ public function editProcess() {
     exit;
 }
 
+public function deleteProcess(int $id) {
+    if (!$id) {
+        header('Location: index.php?action=home');
+        exit;
+    }
+
+    $tripModel = new TripModel();
+    $trip = $tripModel->getTripById($id);
+
+    // sécurité : seul l’auteur peut supprimer
+    if (!$trip || $trip['user_mail'] !== $_SESSION['user_mail']) {
+        header('Location: index.php?action=home');
+        exit;
+    }
+
+    $tripModel->deleteTrip($id);
+
+    header('Location: index.php?action=home');
+    exit;
+}
+
 
 }

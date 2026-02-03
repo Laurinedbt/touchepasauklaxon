@@ -54,6 +54,16 @@ switch ($action) {
     }
     break;
 
+    case 'trip_delete':
+    if (!isset($_SESSION['user_mail'])) {
+        header('Location: index.php?action=login');
+        exit;
+    }
+
+    $tripController->deleteProcess((int)($_GET['id'] ?? 0));
+    break;
+
+
 
     case 'home':
     default:

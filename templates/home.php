@@ -62,25 +62,32 @@
                                 <!-- MODAL VOIR INFOS -->
                                 <?php if (isset($_SESSION['user_mail'])): ?>
                                     <i class="bi bi-eye"
-                                    role="button"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#tripModal"
-                                    data-auteur="<?= htmlspecialchars(($trip['Prenom'] ?? '').' '.($trip['Nom'] ?? '')) ?>"
-                                    data-phone="<?= htmlspecialchars($trip['Telephone'] ?? '') ?>"
-                                    data-mail="<?= htmlspecialchars($trip['Mail'] ?? '') ?>"
-                                    data-places="<?= htmlspecialchars($trip['places'] ?? '') ?>">
+                                        role="button"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#tripModal"
+                                        data-auteur="<?= htmlspecialchars(($trip['Prenom'] ?? '').' '.($trip['Nom'] ?? '')) ?>"
+                                        data-phone="<?= htmlspecialchars($trip['Telephone'] ?? '') ?>"
+                                        data-mail="<?= htmlspecialchars($trip['Mail'] ?? '') ?>"
+                                        data-places="<?= htmlspecialchars($trip['places'] ?? '') ?>">
                                     </i>
                                 <?php endif; ?>
 
                                 <!-- MODAL MODIFIER TRAJET -->
                                 <?php if ($_SESSION['user_mail'] === $trip['user_mail']): ?>
-                                <a href="index.php?action=trip_edit&id=<?= $trip['id'] ?>" class="me-2">
-                                    <i class="bi bi-pencil-square"></i>
-                                </a>
-                            <?php endif; ?>
+                                    <a href="index.php?action=trip_edit&id=<?= $trip['id'] ?>" class="me-2">
+                                        <i class="bi bi-pencil-square text-dark"></i>
+                                    </a>
+                                <?php endif; ?>
 
+                                <!-- MODAL SUPPRIMER TRAJET -->
+                                <?php if ($_SESSION['user_mail'] === $trip['user_mail']): ?>
+                                    <a href="index.php?action=trip_delete&id=<?= $trip['id'] ?>"
+                                        class="text-dark"
+                                        onclick="return confirm('Supprimer ce trajet ?');">
+                                        <i class="bi bi-trash"></i>
+                                    </a>
+                                <?php endif; ?>
                             </td>
-
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
