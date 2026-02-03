@@ -62,7 +62,12 @@ if (!isset($trip) || !$trip) {
                 <input type="time" name="heure_arrivee" id="heure_arrivee" required value="<?= htmlspecialchars((string)$trip['heure_arrivee']) ?>"><br><br>
 
                 <label for="places">Places</label>
-                <input type="number" name="places" id="places" min="1" required value="<?= htmlspecialchars((string)$trip['places']) ?>"><br><br>
+                <input type="number" name="places" id="places" min="1" required value="<?= htmlspecialchars((string)$trip['places']) ?>" readonly><br><br>
+
+                <label for="places_disponibles">Places disponibles</label>
+                <input type="number" name="places_disponibles" id="places_disponibles" 
+                    min="0" max="<?= (int)$trip['places'] ?>" required 
+                    value="<?= htmlspecialchars($trip['places_disponibles']) ?>" required><br><br>
 
                 <input type="submit" value="Modifier le trajet" class="btn btn-dark">
                 <a href="index.php?action=home" class="btn btn-secondary">Annuler</a>

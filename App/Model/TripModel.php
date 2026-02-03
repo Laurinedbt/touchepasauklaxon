@@ -80,7 +80,7 @@ class TripModel extends DefaultModel {
             heure_depart = :heure_depart,
             date_arrivee = :date_arrivee,
             heure_arrivee = :heure_arrivee,
-            places = :places
+            places_disponibles = :places_disponibles
         WHERE id = :id
     ');
 
@@ -91,8 +91,8 @@ class TripModel extends DefaultModel {
         ':heure_depart' => $data['heure_depart'],
         ':date_arrivee' => $data['date_arrivee'],
         ':heure_arrivee' => $data['heure_arrivee'],
-        ':places' => $data['places'],
-        ':id' => $data['id'],
+        ':places_disponibles' => $data['places_disponibles'],
+        ':id' => (int)$data['id'],
     ]);
 }
 }
