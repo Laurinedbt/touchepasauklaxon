@@ -42,16 +42,15 @@ class TripModel extends DefaultModel {
      */
     public function getAvailableTrips(): array {
         $stmt = $this->db->query('
-            SELECT id, depart, date_depart, heure_depart, 
+            SELECT id, user_mail, depart, date_depart, heure_depart, 
                    destination, date_arrivee, heure_arrivee, places, 
                    places_disponibles
             FROM trips
             WHERE places_disponibles > 0
-              AND (date_depart > CURDATE() OR (date_depart = CURDATE() AND heure_depart >= NOW()))
             ORDER BY date_depart ASC, heure_depart ASC
         ');
 
-        return $stmt->fetchAll();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function getAllTrips(): array {
