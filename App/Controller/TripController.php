@@ -36,5 +36,35 @@ class TripController {
         return $agenceModel->getAllCities();
     }
 
+    public function editForm(?int $id) {
+    if (!$id) {
+        header('Location: index.php?action=home');
+        exit;
+    }
+
+    $tripModel = new TripModel();
+    $trip = $tripModel->getTripById($id);
+
+    // sécurité : seul l'auteur peut modifier
+    if (!$trip || $trip['user_mail'] !== $_SESSION['user_mail']) {
+        header('Location: index.php?action=home');
+        exit;
+    }
+
+    $villes = $this->getCities();
+
+    require __DIR__ . '/../../templates/trip_edit.php';
+}
+
+
+public function editProcess() {
+    $tripModel = new TripModel();
+
+    $tripModel->updateTrip($_POST);
+
+    header('Location: index.php?action=home');
+    exit;
+}
+
 
 }

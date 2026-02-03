@@ -38,6 +38,22 @@ switch ($action) {
     }
     break;
 
+    case 'trip_edit':
+    if (!isset($_SESSION['user_mail'])) {
+        header('Location: index.php?action=login');
+        exit;
+    }
+
+    require_once __DIR__ . '/../App/Controller/TripController.php';
+    $tripController = new TripController();
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $tripController->editProcess();
+    } else {
+        $tripController->editForm($_GET['id'] ?? null);
+    }
+    break;
+
 
     case 'home':
     default:

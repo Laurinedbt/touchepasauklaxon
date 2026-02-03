@@ -64,6 +64,35 @@ class TripModel extends DefaultModel {
         FROM trips');
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function getTripById(int $id): array|false {
+    $stmt = $this->db->prepare('SELECT * FROM trips WHERE id = :id');
+    $stmt->execute(['id' => $id]);
+    return $stmt->fetch(PDO::FETCH_ASSOC);
 }
 
+    public function updateTrip(array $data): void {
+    $stmt = $this->db->prepare('
+        UPDATE trips
+        SET depart = :depart,
+            destination = :destination,
+            date_depart = :date_depart,
+            heure_depart = :heure_depart,
+            date_arrivee = :date_arrivee,
+            heure_arrivee = :heure_arrivee,
+            places = :places
+        WHERE id = :id
+    ');
 
+    $stmt->execute([
+        ':depart' => $data['depart'],
+        ':destination' => $data['destination'],
+        ':date_depart' => $data['date_depart'],
+        ':heure_depart' => $data['heure_depart'],
+        ':date_arrivee' => $data['date_arrivee'],
+        ':heure_arrivee' => $data['heure_arrivee'],
+        ':places' => $data['places'],
+        ':id' => $data['id'],
+    ]);
+}
+}

@@ -56,8 +56,10 @@
                             <td><?= htmlspecialchars($trip['heure_arrivee']) ?></td>
                             <td><?= htmlspecialchars($trip['places_disponibles']) ?></td>
 
-                            <!-- MODAL -->
+                            <!-- LIGNE MODALS -->
                             <td class="text-center">
+
+                                <!-- MODAL VOIR INFOS -->
                                 <?php if (isset($_SESSION['user_mail'])): ?>
                                     <i class="bi bi-eye"
                                     role="button"
@@ -69,6 +71,14 @@
                                     data-places="<?= htmlspecialchars($trip['places'] ?? '') ?>">
                                     </i>
                                 <?php endif; ?>
+
+                                <!-- MODAL MODIFIER TRAJET -->
+                                <?php if ($_SESSION['user_mail'] === $trip['user_mail']): ?>
+                                <a href="index.php?action=trip_edit&id=<?= $trip['id'] ?>" class="me-2">
+                                    <i class="bi bi-pencil-square"></i>
+                                </a>
+                            <?php endif; ?>
+
                             </td>
 
                         </tr>
