@@ -51,19 +51,20 @@ L’application est destinée à être déployée sur l’intranet de l’entrep
 
 ## Compte et rôles
 
-- Utilisateur connecté
+Utilisateur connecté
 
 Cette page affichera, en plus des informations de la page d’accueil :
 
 • Un bouton permettant d’afficher les informations complémentaires dans une fenêtre
 modale avec :
-    • L’identité de la personne qui propose le trajet,
-    • Son numéro de téléphone,
-    • Son adresse email,
-    • Le nombre total de places,
-    • Si l’utilisateur est l’auteur d’un trajet, un bouton lui permettant d’accéder à la
+
+- L’identité de la personne qui propose le trajet,
+- Son numéro de téléphone,
+- Son adresse email,
+- Le nombre total de places,
+- Si l’utilisateur est l’auteur d’un trajet, un bouton lui permettant d’accéder à la
     modification de ce trajet,
-    • Si l’utilisateur est l’auteur d’un trajet, un bouton lui permettant de supprimer le trajet.
+- Si l’utilisateur est l’auteur d’un trajet, un bouton lui permettant de supprimer le trajet.
     
 
 - Création d’un trajet :
@@ -76,6 +77,7 @@ Des contrôles de cohérence doivent être réalisés.
 - Tableau de bord de l’administrateur :
 
 Le tableau de bord doit permettre à l’administrateur de :
+
 • Lister les utilisateurs,
 • Lister les agences,
 • Créer, modifier et supprimer une agence,
@@ -96,12 +98,12 @@ Les documents de conception (MCD / MLD) sont disponibles dans "/docs".
 
 ## Technologies utilisées :
 
-PHP 8
-MySQL
-HTML5 / Sass
-Bootstrap 5
-Bootstrap Icons
-JavaScript
+- PHP 8
+- MySQL
+- HTML5 / Sass
+- Bootstrap 5
+- Bootstrap Icons
+- JavaScript
 
 
 
