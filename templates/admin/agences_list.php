@@ -14,9 +14,7 @@ if (session_status() === PHP_SESSION_NONE) {
     <link rel="stylesheet" href="../public/style.css">
 </head>
     <body>
-
-        <main class="mx-5">
-
+        <main>
             <h1>Listes des agences</h1>
 
             <table class="table table-striped table-bordered">
@@ -38,9 +36,9 @@ if (session_status() === PHP_SESSION_NONE) {
             </table>
 
         </main>
+        <footer class="d-flex justify-content-center">
+            <div><p>&copy; 2026 - MVC PHP</p></div>
+        </footer>
     </body>
-    <footer class="d-flex justify-content-center">
-        <div><p>&copy; 2026 - MVC PHP</p></div>
-    </footer>
 </html>
 

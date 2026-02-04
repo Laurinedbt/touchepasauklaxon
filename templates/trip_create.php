@@ -14,52 +14,53 @@ if (session_status() === PHP_SESSION_NONE) {
     <link rel="stylesheet" href="../public/style.css">
 </head>
     <body>
+        <main>
+            <h1>Créer un trajet</h1>
 
-        <main class="mx-5">
+                <form action="index.php?action=trip_create" method="POST">
+                    <!-- Infos utilisateur pré-remplies et non modifiables -->
+                    <label for="name_surname">Nom & Prénom :</label>
 
-        <h2>Créer un trajet</h2>
+                    <input type="text" name="name_surname" value="<?= htmlspecialchars($_SESSION['user_name'] ?? '') ?>" readonly><br><br>
 
-            <form action="index.php?action=trip_create" method="POST">
-                <!-- Infos utilisateur pré-remplies et non modifiables -->
-                <label for="name_surname">Nom & Prénom :</label>
+                    <label for="user_mail">Email :</label>
+                    <input type="email" name="user_mail" value="<?= htmlspecialchars($_SESSION['user_mail'] ?? '') ?>" readonly><br><br>
 
-                <input type="text" name="name_surname" value="<?= htmlspecialchars($_SESSION['user_name'] ?? '') ?>" readonly><br><br>
+                    <!-- Infos sur le trajet -->
+                    <label for="depart">Départ</label>
+                    <input list="villes" name="depart" id="depart" required><br><br>
 
-                <label for="user_mail">Email :</label>
-                <input type="email" name="user_mail" value="<?= htmlspecialchars($_SESSION['user_mail'] ?? '') ?>" readonly><br><br>
+                    <label for="destination">Destination</label>
+                    <input list="villes" name="destination" id="destination" required><br><br>
 
-                <!-- Infos sur le trajet -->
-                <label for="depart">Départ</label>
-                <input list="villes" name="depart" id="depart" required><br><br>
+                    <datalist id="villes">
+                        <?php foreach ($villes as $ville): ?>
+                            <option value="<?= htmlspecialchars($ville['nom_ville']) ?>"></option>
+                        <?php endforeach; ?>
+                    </datalist>
+                    
 
-                <label for="destination">Destination</label>
-                <input list="villes" name="destination" id="destination" required><br><br>
+                    <label for="date_depart">Date départ</label>
+                    <input type="date" name="date_depart" id="date_depart" required>
 
-                <datalist id="villes">
-                    <?php foreach ($villes as $ville): ?>
-                        <option value="<?= htmlspecialchars($ville['nom_ville']) ?>"></option>
-                    <?php endforeach; ?>
-                </datalist>
-                
+                    <label for="heure_depart">Heure départ</label>
+                    <input type="time" name="heure_depart" id="heure_depart" required><br><br>
 
-                <label for="date_depart">Date départ</label>
-                <input type="date" name="date_depart" id="date_depart" required>
+                    <label for="date_arrivee">Date arrivée</label>
+                    <input type="date" name="date_arrivee" id="date_arrivee" required>
 
-                <label for="heure_depart">Heure départ</label>
-                <input type="time" name="heure_depart" id="heure_depart" required><br><br>
+                    <label for="heure_arrivee">Heure arrivée</label>
+                    <input type="time" name="heure_arrivee" id="heure_arrivee" required><br><br>
 
-                <label for="date_arrivee">Date arrivée</label>
-                <input type="date" name="date_arrivee" id="date_arrivee" required>
+                    <label for="places">Places</label>
+                    <input type="number" name="places" id="places" min="1" required><br><br>
 
-                <label for="heure_arrivee">Heure arrivée</label>
-                <input type="time" name="heure_arrivee" id="heure_arrivee" required><br><br>
-
-                <label for="places">Places</label>
-                <input type="number" name="places" id="places" min="1" required><br><br>
-
-                <input type="submit" value="Créer le trajet" class="btn btn-dark">
-            </form>
+                    <input type="submit" value="Créer le trajet" class="btn btn-dark">
+                </form>
         </main>
+        <footer class="d-flex justify-content-center">
+            <div><p>&copy; 2026 - MVC PHP</p></div>
+        </footer>
     </body>
 </html>
 

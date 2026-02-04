@@ -1,28 +1,35 @@
-.dark-color, .navbar-brand{
-    color: #384050;
+body {
+  margin-left: 50px;
+  margin-right: 50px;
 }
 
-.dark-row{
-    background-color: #384050;
-    color: #f1f8fc;
+.dark-color, .navbar-brand {
+  color: #384050;
 }
 
-a {
-    text-decoration: none;
-    color: #f1f8fc;
+.dark-row {
+  background-color: #384050;
+  color: #f1f8fc;
 }
 
-.navbar{
-    border: 2px solid #384050;
-    border-radius: 15px;
+.navbar {
+  border: 2px solid #384050;
+  border-radius: 15px;
 }
 
-.info-text{
-    font-size: 2em;
+.info-text {
+  font-size: 2em;
 }
 
-footer{
-    margin-top: 250px;   
+h1 {
+  color: #384050;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  text-align: center;
 }
 
+footer {
+  margin-top: 100px;
+}
 
+/*# sourceMappingURL=style.css.map */

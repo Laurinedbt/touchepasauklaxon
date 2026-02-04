@@ -74,5 +74,8 @@ if (!isset($trip) || !$trip) {
                 <a href="index.php?action=home" class="btn btn-secondary">Annuler</a>
             </form>
         </main>
+        <footer class="d-flex justify-content-center">
+            <div><p>&copy; 2026 - MVC PHP</p></div>
+        </footer>
     </body>
 </html>

@@ -1,0 +1,35 @@
+$dark-color: #384050;
+
+body{
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.dark-color, .navbar-brand{
+  color: $dark-color;
+}
+
+.dark-row{
+  background-color: $dark-color;
+  color: #f1f8fc;
+}
+
+.navbar{
+  border: 2px solid $dark-color;
+  border-radius: 15px;
+}
+
+.info-text{
+  font-size: 2em;
+}
+
+h1{
+    color: $dark-color;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    text-align: center;
+}
+
+footer{
+    margin-top: 100px;
+}

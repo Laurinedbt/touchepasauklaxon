@@ -30,5 +30,8 @@
                 </div>
             </div>
         </main>
+        <footer class="d-flex justify-content-center">
+            <div><p>&copy; 2026 - MVC PHP</p></div>
+        </footer>
     </body>
 </html>

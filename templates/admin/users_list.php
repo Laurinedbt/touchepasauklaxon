@@ -11,12 +11,10 @@ if (session_status() === PHP_SESSION_NONE) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Listes des utilisateurs</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <link rel="stylesheet" href="../public/style.css">
+    <link rel="stylesheet" href='../public/style.css'>
 </head>
     <body>
-
-        <main class="mx-5">
-
+        <main>
             <h1>Listes des utilisateurs</h1>
 
             <table class="table table-striped table-bordered">
@@ -43,6 +41,9 @@ if (session_status() === PHP_SESSION_NONE) {
                 </tbody>
             </table>
         </main>
+        <footer class="d-flex justify-content-center">
+            <div><p>&copy; 2026 - MVC PHP</p></div>
+        </footer>
     </body>
 </html>
 
