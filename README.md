@@ -76,13 +76,7 @@ Des contrôles de cohérence doivent être réalisés.
 
 - Tableau de bord de l’administrateur :
 
-Le tableau de bord doit permettre à l’administrateur de :
-
-• Lister les utilisateurs,
-• Lister les agences,
-• Créer, modifier et supprimer une agence,
-• Lister les trajets,
-• Supprimer un trajet.
+Le tableau de bord doit permettre à l’administrateur de : lister les utilisateurs, lister les agences, créer, modifier et supprimer une agence, lister les trajets et supprimer un trajet.
 
 
 ## Fonctionnalités
