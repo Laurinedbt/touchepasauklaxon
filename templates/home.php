@@ -92,7 +92,7 @@
                                 <!-- MODAL MODIFIER TRAJET -->
                                 <?php if ($_SESSION['user_mail'] === $trip['user_mail']): ?>
                                     <a href="index.php?action=trip_edit&id=<?= $trip['id'] ?>" class="me-2">
-                                        <i class="bi bi-pencil-square text-dark"></i>
+                                        <i class="bi bi-pencil-square text-primary"></i>
                                     </a>
                                 <?php endif; ?>
 
@@ -101,7 +101,7 @@
                                     <a href="index.php?action=trip_delete&id=<?= $trip['id'] ?>"
                                         class="text-dark"
                                         onclick="return confirm('Supprimer ce trajet ?');">
-                                        <i class="bi bi-trash"></i>
+                                        <i class="bi bi-trash text-danger"></i>
                                     </a>
                                 <?php endif; ?>
                             </td>
