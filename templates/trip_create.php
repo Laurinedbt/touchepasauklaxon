@@ -14,6 +14,9 @@ if (session_status() === PHP_SESSION_NONE) {
     <link rel="stylesheet" href="../public/style.css">
 </head>
     <body>
+
+    <?php require_once 'header.php'; ?>
+
         <main>
             <h1>Créer un trajet</h1>
 

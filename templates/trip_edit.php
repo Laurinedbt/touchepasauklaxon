@@ -21,6 +21,8 @@ if (!isset($trip) || !$trip) {
 </head>
     <body>
 
+    <?php require_once 'header.php'; ?>
+    
         <main class="mx-5">
 
         <h2>Modifier un trajet</h2>

@@ -1,0 +1,32 @@
+﻿MLD — Touche pas au klaxon
+
+
+USERS (
+    id PK,
+    Nom,
+    Prenom,
+    Telephone,
+    Mail,
+    password,
+    role
+)
+
+
+AGENCES (
+    id PK,
+    nom_ville
+)
+
+
+TRIPS (
+    id PK,
+    user_mail FK → USERS.Mail,
+    depart FK → AGENCES.nom_ville,
+    destination FK → AGENCES.nom_ville,
+    date_depart,
+    heure_depart,
+    date_arrivee,
+    heure_arrivee,
+    places,
+    places_disponibles
+)

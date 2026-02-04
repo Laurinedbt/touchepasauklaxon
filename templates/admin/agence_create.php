@@ -8,6 +8,8 @@
         <link rel="stylesheet" href="../public/style.css">
     </head>
     <body>
+        <?php require_once __DIR__ . '/../header.php'; ?>
+
         <main>
             <h1>Créer une agence</h1>
 

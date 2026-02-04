@@ -16,6 +16,8 @@ if (session_status() === PHP_SESSION_NONE) {
     <link rel="stylesheet" href="../public/style.css">
 </head>
     <body>
+        <?php require_once __DIR__ . '/../header.php'; ?>
+
         <main>
             <h1>Listes des agences</h1>
             <a href="index.php?action=admin_agence_create" class="btn btn-dark my-3">Créer une agence</a>
