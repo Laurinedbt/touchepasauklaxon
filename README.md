@@ -15,10 +15,10 @@ L’application est destinée à être déployée sur l’intranet de l’entrep
 
 ## Installation
 
-
 1. Cloner le projet
 ```bash
 'git clone https://github.com/TON_COMPTE/klaxon.git '
+```
 
 2. Placer le projet dans le dossier du serveur local : C:/xampp/htdocs/klaxon
 
@@ -33,12 +33,13 @@ L’application est destinée à être déployée sur l’intranet de l’entrep
 4. Configurer la connexion à la base de données
 
 - Modifier le fichier : Core/Database.php
-
+```bash
     return new PDO(
         'mysql:host=localhost;dbname=touche_pas_au_klaxon;charset=utf8mb4',
         'root',
         ''
     );
+```
 
 
 5. Lancer l’application
@@ -48,20 +49,22 @@ L’application est destinée à être déployée sur l’intranet de l’entrep
 
 
 
-Compte et rôles
+## Compte et rôles
 
 - Utilisateur connecté
 
 Cette page affichera, en plus des informations de la page d’accueil :
+
 • Un bouton permettant d’afficher les informations complémentaires dans une fenêtre
 modale avec :
-o L’identité de la personne qui propose le trajet,
-o Son numéro de téléphone,
-o Son adresse email,
-o Le nombre total de places,
-• Si l’utilisateur est l’auteur d’un trajet, un bouton lui permettant d’accéder à la
-modification de ce trajet,
-• Si l’utilisateur est l’auteur d’un trajet, un bouton lui permettant de supprimer le trajet.
+    • L’identité de la personne qui propose le trajet,
+    • Son numéro de téléphone,
+    • Son adresse email,
+    • Le nombre total de places,
+    • Si l’utilisateur est l’auteur d’un trajet, un bouton lui permettant d’accéder à la
+    modification de ce trajet,
+    • Si l’utilisateur est l’auteur d’un trajet, un bouton lui permettant de supprimer le trajet.
+    
 
 - Création d’un trajet
 Cette page doit permettre à un utilisateur de créer un nouveau trajet.
@@ -76,12 +79,19 @@ Le tableau de bord doit permettre à l’administrateur de :
 • Lister les trajets,
 • Supprimer un trajet.
 
-- Fonctionnalités :
 
-Authentification sécurisée (mots de passe hashés)
-Message flash de confirmation
+## Fonctionnalités
 
-- Technologies utilisées :
+- Authentification sécurisée (mots de passe hashés)
+- Message flash de confirmation
+
+## Base de données
+
+Les scripts SQL sont disponibles dans le dossier /database.
+Les documents de conception (MCD / MLD) sont disponibles dans "/docs".
+
+
+## Technologies utilisées :
 
 PHP 8
 MySQL
