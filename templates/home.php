@@ -12,6 +12,18 @@
     <body>
 
     <?php require_once 'header.php'; ?>
+
+    <?php require_once __DIR__ . '/../Core/Flash.php'; 
+
+        $flash = getFlash();
+        if ($flash): ?>
+        <div>
+            <div class="alert alert-<?= htmlspecialchars($flash['type']) ?> alert-dismissible fade show text-center mx-5" role="alert">
+                <?= htmlspecialchars($flash['message']) ?>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        </div>
+    <?php endif; ?>
     
         <main class="mx-5">
 
