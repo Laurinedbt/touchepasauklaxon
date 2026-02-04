@@ -11,6 +11,8 @@ if (session_status() === PHP_SESSION_NONE) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trajets</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+
     <link rel="stylesheet" href="../public/style.css">
 </head>
     <body>
@@ -29,6 +31,7 @@ if (session_status() === PHP_SESSION_NONE) {
                             <th>Heure arrivée</th>
                             <th>Places</th>
                             <th>Places disponibles</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -46,6 +49,11 @@ if (session_status() === PHP_SESSION_NONE) {
                                     <td><?= htmlspecialchars($trip['heure_arrivee']) ?></td>
                                     <td><?= htmlspecialchars($trip['places']) ?></td>
                                     <td><?= htmlspecialchars($trip['places_disponibles']) ?></td>
+                                    <td>
+                                        <a href="index.php?action=admin_trip_delete&id=<?= $trip['id'] ?>" onclick="return confirm('Supprimer ce trajet ?');">
+                                            <i class="bi bi-trash text-danger"></i>
+                                        </a>
+                                    </td>
                                 </tr>
                         <?php endforeach; ?>
                     </tbody>

@@ -36,4 +36,92 @@ class AdminController
 
         require __DIR__ . '/../../templates/admin/agences_list.php';
     }
+
+
+    // CREER / MODIFIER / SUPPRIMER AGENCE
+
+    public function agenceCreateForm(): void {
+    $this->checkAdmin();
+    require __DIR__ . '/../../templates/admin/agence_create.php';
+}
+
+    public function agenceCreateProcess(): void {
+        $this->checkAdmin();
+
+        $nom = trim($_POST['nom_ville'] ?? '');
+        if ($nom === '') {
+            header('Location: index.php?action=admin_agence_create&error=1');
+            exit;
+        }
+
+        $agenceModel = new AgenceModel();
+        $agenceModel->createAgence($nom);
+
+        header('Location: index.php?action=admin_agences');
+        exit;
+    }
+
+    public function agenceEditForm(int $id): void {
+        $this->checkAdmin();
+
+        $agenceModel = new AgenceModel();
+        $agence = $agenceModel->getAgenceById($id);
+
+        if (!$agence) {
+            header('Location: index.php?action=admin_agences');
+            exit;
+        }
+
+        require __DIR__ . '/../../templates/admin/agence_edit.php';
+    }
+
+    public function agenceEditProcess(): void {
+        $this->checkAdmin();
+
+        $id = (int)($_POST['id'] ?? 0);
+        $nom = trim($_POST['nom_ville'] ?? '');
+
+        if ($id <= 0 || $nom === '') {
+            header('Location: index.php?action=admin_agences');
+            exit;
+        }
+
+        $agenceModel = new AgenceModel();
+        $agenceModel->updateAgence($id, $nom);
+
+        header('Location: index.php?action=admin_agences');
+        exit;
+    }
+
+    public function agenceDelete(int $id): void {
+        $this->checkAdmin();
+
+        if ($id <= 0) {
+            header('Location: index.php?action=admin_agences');
+            exit;
+        }
+
+        $agenceModel = new AgenceModel();
+        $agenceModel->deleteAgence($id);
+
+        header('Location: index.php?action=admin_agences');
+        exit;
+    }
+
+    // SUPPRESSION TRAJET ADMIN
+    public function tripDelete(int $id): void {
+        $this->checkAdmin();
+
+        if ($id <= 0) {
+            header('Location: index.php?action=admin_trips');
+            exit;
+        }
+
+        $tripModel = new TripModel();
+        $tripModel->deleteTrip($id);
+
+        header('Location: index.php?action=admin_trips');
+        exit;
+    }
+
 }

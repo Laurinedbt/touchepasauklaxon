@@ -75,6 +75,10 @@ switch ($action) {
     case 'admin_users':
     case 'admin_trips':
     case 'admin_agences':
+    case 'admin_agence_create':
+    case 'admin_agence_edit':
+    case 'admin_agence_delete':
+    case 'admin_trip_delete':
 
     if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
         header('Location: index.php?action=home');
@@ -87,6 +91,24 @@ switch ($action) {
     if ($action === 'admin_users') $admin->usersList();
     if ($action === 'admin_trips') $admin->tripsList();
     if ($action === 'admin_agences') $admin->agencesList();
+
+    if ($action === 'admin_agence_create') {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') $admin->agenceCreateProcess();
+        else $admin->agenceCreateForm();
+    }
+
+    if ($action === 'admin_agence_edit') {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') $admin->agenceEditProcess();
+        else $admin->agenceEditForm((int)($_GET['id'] ?? 0));
+    }
+
+    if ($action === 'admin_agence_delete') {
+        $admin->agenceDelete((int)($_GET['id'] ?? 0));
+    }
+
+    if ($action === 'admin_trip_delete') {
+        $admin->tripDelete((int)($_GET['id'] ?? 0));
+    }
 
     break;
 
