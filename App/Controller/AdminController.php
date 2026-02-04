@@ -4,9 +4,18 @@ require_once __DIR__ . '/../Model/UserModel.php';
 require_once __DIR__ . '/../Model/TripModel.php';
 require_once __DIR__ . '/../Model/AgenceModel.php';
 
+/**
+ * Gére les fonctionnalités réservées aux administrateurs
+ * 
+ * Permet de gérer les utilisateurs, les trajets et les agences
+ */
 class AdminController
 {
-	private function checkAdmin() {
+    /** Vérifie que l’utilisateur est administrateur 
+     * Redirige vers la page d’accueil si l'utilisateur n’est pas admin
+     * @return void
+    */
+	private function checkAdmin(): void {
         if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
             header('Location: index.php?action=home');
             exit;
@@ -38,7 +47,7 @@ class AdminController
     }
 
 
-    // CREER / MODIFIER / SUPPRIMER AGENCE
+    /* GESTION AGENCES */
 
     public function agenceCreateForm(): void {
     $this->checkAdmin();
@@ -108,7 +117,7 @@ class AdminController
         exit;
     }
 
-    // SUPPRESSION TRAJET ADMIN
+    /* GESTION TRAJETS */
     public function tripDelete(int $id): void {
         $this->checkAdmin();
 

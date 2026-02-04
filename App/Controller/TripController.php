@@ -4,14 +4,23 @@ require_once __DIR__ . '/../Model/AgenceModel.php';
 
 class TripController {
 
-    // Affiche le formulaire de création
+   
+    /**
+     * Affiche le formulaire de création d’un trajet
+     *
+     * @return void
+     */
     public function createForm() {
         $villes = $this->getCities();
         require __DIR__ . '/../../templates/trip_create.php';
     }
 
-    // Traite le formulaire
-    public function createProcess() {
+    /**
+     * Traite la soumission du formulaire de création d’un trajet
+     *
+     * @return void
+     */
+    public function createProcess(): void {
         
         $tripModel = new TripModel();
 
@@ -34,10 +43,24 @@ class TripController {
         exit;
     }
 
+    /**
+     * Récupère la liste des villes (agences)
+     *
+     * @return array
+     */
+
     public function getCities(): array {
         $agenceModel = new AgenceModel();
         return $agenceModel->getAllCities();
     }
+
+
+    /**
+     * Affiche le formulaire de modification d’un trajet
+     *
+     * @param int|null $id Identifiant du trajet
+     * @return void
+     */
 
     public function editForm(?int $id) {
     if (!$id) {
@@ -60,6 +83,12 @@ class TripController {
     }
 
 
+    /**
+     * Traite la modification d’un trajet
+     *
+     * @return void
+     */
+
     public function editProcess() {
         $tripModel = new TripModel();
 
@@ -72,6 +101,12 @@ class TripController {
         exit;
     }
 
+    /**
+     * Traite la suppression d’un trajet
+     *
+     * @param int $id Identifiant du trajet
+     * @return void
+     */
     public function deleteProcess(int $id) {
         if (!$id) {
             header('Location: index.php?action=home');

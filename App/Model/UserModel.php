@@ -3,6 +3,10 @@
 require_once __DIR__ . '/../Controller/UserController.php';
 require_once __DIR__ . '/../../Core/DefaultModel.php';
 
+/**
+ * Modèle de gestion des utilisateurs
+ */
+
 class UserModel extends DefaultModel {
 
     /**
