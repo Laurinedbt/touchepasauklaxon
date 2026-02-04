@@ -57,44 +57,44 @@ class TripController {
     $villes = $this->getCities();
 
     require __DIR__ . '/../../templates/trip_edit.php';
-}
+    }
 
 
-public function editProcess() {
-    $tripModel = new TripModel();
+    public function editProcess() {
+        $tripModel = new TripModel();
 
-    $tripModel->updateTrip($_POST);
+        $tripModel->updateTrip($_POST);
 
-    require_once __DIR__ . '/../../Core/Flash.php';
-    setFlashMessage('Le trajet a été modifié avec succès.', 'success');
+        require_once __DIR__ . '/../../Core/Flash.php';
+        setFlashMessage('Le trajet a été modifié avec succès.', 'success');
 
-    header('Location: index.php?action=home');
-    exit;
-}
-
-public function deleteProcess(int $id) {
-    if (!$id) {
         header('Location: index.php?action=home');
         exit;
     }
 
-    $tripModel = new TripModel();
-    $trip = $tripModel->getTripById($id);
+    public function deleteProcess(int $id) {
+        if (!$id) {
+            header('Location: index.php?action=home');
+            exit;
+        }
 
-    // sécurité : seul l’auteur peut supprimer
-    if (!$trip || $trip['user_mail'] !== $_SESSION['user_mail']) {
+        $tripModel = new TripModel();
+        $trip = $tripModel->getTripById($id);
+
+        // sécurité : seul l’auteur peut supprimer
+        if (!$trip || $trip['user_mail'] !== $_SESSION['user_mail']) {
+            header('Location: index.php?action=home');
+            exit;
+        }
+
+        $tripModel->deleteTrip($id);
+
+        require_once __DIR__ . '/../../Core/Flash.php';
+        setFlashMessage('Le trajet a été supprimé avec succès.', 'success');
+
         header('Location: index.php?action=home');
         exit;
     }
-
-    $tripModel->deleteTrip($id);
-
-    require_once __DIR__ . '/../../Core/Flash.php';
-    setFlashMessage('Le trajet a été supprimé avec succès.', 'success');
-
-    header('Location: index.php?action=home');
-    exit;
-}
 
 
 }
