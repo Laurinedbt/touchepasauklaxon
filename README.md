@@ -66,12 +66,15 @@ modale avec :
     • Si l’utilisateur est l’auteur d’un trajet, un bouton lui permettant de supprimer le trajet.
     
 
-- Création d’un trajet
+- Création d’un trajet :
+
 Cette page doit permettre à un utilisateur de créer un nouveau trajet.
+
 Les informations concernant l’utilisateur (nom, prénom, adresse email et téléphone seront prérenseignées et non modifiables.
 Des contrôles de cohérence doivent être réalisés. 
 
-- Tableau de bord de l’administrateur
+- Tableau de bord de l’administrateur :
+
 Le tableau de bord doit permettre à l’administrateur de :
 • Lister les utilisateurs,
 • Lister les agences,
