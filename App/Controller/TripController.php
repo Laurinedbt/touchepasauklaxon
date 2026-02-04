@@ -27,6 +27,9 @@ class TripController {
             'places_disponibles' => (int)($_POST['places'] ?? 1)
         ]);
 
+        require_once __DIR__ . '/../../Core/Flash.php';
+        setFlashMessage('Le trajet a été créé avec succès.', 'success');
+
         header('Location: index.php?action=home');
         exit;
     }
@@ -62,6 +65,9 @@ public function editProcess() {
 
     $tripModel->updateTrip($_POST);
 
+    require_once __DIR__ . '/../../Core/Flash.php';
+    setFlashMessage('Le trajet a été modifié avec succès.', 'success');
+
     header('Location: index.php?action=home');
     exit;
 }
@@ -82,6 +88,9 @@ public function deleteProcess(int $id) {
     }
 
     $tripModel->deleteTrip($id);
+
+    require_once __DIR__ . '/../../Core/Flash.php';
+    setFlashMessage('Le trajet a été supprimé avec succès.', 'success');
 
     header('Location: index.php?action=home');
     exit;
